@@ -21,7 +21,7 @@ class UserInputs {
         bool stop = false;
         char moreInputs;
      
-        
+        // function to get inputs from user and store the amount, category, type using the finance manager
         void getUserInputs() {
 
             while(!stop) {
