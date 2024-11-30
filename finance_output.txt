@@ -1,0 +1,7 @@
+All Transactions: 
+Income: $1000 [Salary]
+
+Summary: 
+Total Income: $1000
+Total Expenses: $0
+Net Balance: $1000

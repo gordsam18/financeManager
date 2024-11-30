@@ -1,10 +1,8 @@
 # Overview
 
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
+{Goal: Building a simple spending tracker in C++ that outputs a transactions history file}
 
-{Provide a description of the software that you wrote to demonstrate the C++ language.}
-
-{Describe your purpose for writing this software.}
+{I am writing this as a way to learn the basics of C++ and writing to files}
 
 {Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
 
@@ -12,21 +10,29 @@
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+{Tools: }
 
-{Describe the programming language that you used and any libraries.}
+{Languages: 
+    C++
+Libraries:
+    iostream
+    fstream
+    string
+    sstream
+    vector
+}
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
+{Helpful websites}
 
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [w3schools.com](https://www.w3schools.com/cpp/default.asp)
+- [isocpp.org](https://isocpp.org/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
+{Future Improvements:}
 
-- Item 1
-- Item 2
-- Item 3
+- Data Validation 
+- GUI
+- More structured file formatting 

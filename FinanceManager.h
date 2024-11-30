@@ -1,6 +1,9 @@
 #ifndef FINANCEMANAGER_H
 #define FINANCEMANAGER_H
 
+#include <iostream>
+#include <string>
+#include <sstream>
 #include <vector>
 #include "Transaction.h"
 
@@ -16,16 +19,22 @@ class FinanceManager {
         }
 
         // display the transaction 
-        void displayTransactions() const {
-            for (const auto& type : transactions) {
-                type.display();
+        std::string displayTransactions() const {
+            std::ostringstream oss;
+            for (size_t i = 0; i < transactions.size(); ++i) {
+                const Transaction& type = transactions[i];
+                oss << type.getType() << ": $" << type.getAmount()
+                    << " [" << type.getCategory() <<"]\n";
             }
+            return oss.str();
         }
 
         // Summarize totals
-        void summarize() const {
+        std::string summarize() const {
             double totalIncome = 0, totalExpenses = 0;
-            for (const auto& type : transactions) {
+
+            for (size_t i = 0; i < transactions.size(); ++i) {
+                const Transaction& type = transactions[i];
                 if (type.getType() == "Income") {
                     totalIncome += type.getAmount();
                 } else if (type.getType() == "Expense") {
@@ -33,12 +42,13 @@ class FinanceManager {
                 }
             }
 
-            std::cout << "Total Income: $" << totalIncome << "\n"; 
-            std::cout << "Total Expenses: $" << totalExpenses<< "\n";
-            std::cout << "Balance: $" << totalIncome - totalExpenses<< "\n";
+            std::ostringstream oss;
+            oss << "Total Income: $" << totalIncome << "\n"
+                << "Total Expenses: $" << totalExpenses << "\n"
+                << "Net Balance: $" << (totalIncome - totalExpenses) << "\n";
 
+            return oss.str();
         }
-
 };
 
 #endif

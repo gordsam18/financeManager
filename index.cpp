@@ -1,50 +1,25 @@
 #include <iostream>
+#include <fstream> 
 #include "FinanceManager.h"
+#include "FileController.h"
+#include "UserInputs.h"
 
 using namespace std;
 
 
 int main() {
     FinanceManager manager;
+    FileController fileController("finance_output.txt");
+    UserInputs inputs;
 
-    double amount;
-    std::string category;
-    std::string type;
+    // Get User inputs 
+    inputs.getUserInputs();
+    manager = inputs.getManager();
 
-    bool stop = false;
-    char answer;
+    std::cout << manager.displayTransactions() << manager.summarize();
 
-    while(!stop) {
-
-        std::cout << "Enter amount: ";
-        std::cin >> amount;
-        std::cout << "Input Category: ";
-        std::cin >> category;
-        std::cout << "Is it income or expense?: ";
-        std::cin >> type;
-        manager.addTransaction(Transaction(amount, category, type));
-        std::cout << "Do you have another transaction? (y/n): ";
-        std::cin >> answer;
-        if (answer == 'n') {
-            std::cout << "Thank you.\n";
-            stop = true;
-        };
-    };
- 
-    /*
-    // test cases
-    manager.addTransaction(Transaction(1000, "Salary", "Income"));
-    manager.addTransaction(Transaction(200, "Groceries", "Expense"));
-    manager.addTransaction(Transaction(50, "Utilities", "Expense"));
-    */
-   
-    // Display transactions
-    std::cout << "All Transactions:\n";
-    manager.displayTransactions();
-
-    // Display summary
-    std::cout << "\nSummary:\n";
-    manager.summarize();
+    // Wtite to a file
+    fileController.writeToFile(manager.displayTransactions(), manager.summarize());
 
     return 0;
 };
